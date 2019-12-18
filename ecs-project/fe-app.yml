@@ -1,9 +1,9 @@
-# The manifest for the "api" application.
+# The manifest for the "fe" application.
 # Read the full specification for the "Load Balanced Web App" type at:
 #  https://github.com/aws/amazon-ecs-cli-v2/wiki/Manifests#load-balanced-web-app
 
 # Your application name will be used in naming your resources like log groups, services, etc.
-name: api
+name: fe
 # The "architecture" of the application you're running.
 type: Load Balanced Web App
 

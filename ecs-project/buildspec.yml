@@ -9,8 +9,8 @@ phases:
       - echo "cd into $CODEBUILD_SRC_DIR"
       - cd $CODEBUILD_SRC_DIR
       # Download the ecs-cli-v2 linux binary.
-      - wget https://ecs-cli-v2-release.s3.amazonaws.com/ecs-preview-linux-v0.0.3
-      - mv ./ecs-preview-linux-v0.0.3 ./ecs-preview
+      - wget https://ecs-cli-v2-release.s3.amazonaws.com/ecs-preview-linux-v0.0.4
+      - mv ./ecs-preview-linux-v0.0.4 ./ecs-preview
       - chmod +x ./ecs-preview
   build:
     commands:
@@ -27,7 +27,7 @@ phases:
       - envs=$(./ecs-preview env ls --json | jq '.environments[].name' | sed 's/"//g')
       # Generate the cloudformation templates.
       # The tag is the build ID but we replaced the colon ':' with a dash '-'.
-      - tag=$(sed 's/:/-/g' &lt;&lt;&lt;"$CODEBUILD_BUILD_ID")
+      - tag=$(sed 's/:/-/g' <<<"$CODEBUILD_BUILD_ID")
       - >
         for env in $envs; do
           for app in $apps; do
